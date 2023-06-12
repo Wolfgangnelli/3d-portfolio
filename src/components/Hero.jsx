@@ -12,12 +12,31 @@ const Hero = () => {
         </div>
 
         <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>Hi, I'm <span className='text-[#915eff]'>Andrea</span></h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br className='sm:block hidden' />Numquam non nihil voluptatem corporis nemo minima velit, atque deleniti id harum. Itaque perspiciatis in similique, praesentium veniam assumenda eaque sunt! Expedita?</p>
+          <h1 className={`${styles.heroHeadText} text-white`}>Hi, I&apos;m <span className='text-[#915eff]'>Andrea</span></h1>
+          <p className={`${styles.heroSubText} mt-2 text-white-100`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br className='sm:block hidden' />Numquam non nihil voluptatem corporis nemo minima velit, atque deleniti id harum.</p>
         </div>
-
       </div>
+
       <ComputersCanvas />
+
+      <div className="absolute xs:-bottom-1.5 -bottom-1 w-full flex justify-center items-center">
+        <a href="#about">
+          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
+            <motion.div 
+              animate={{
+                y: [0, 24, 0]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: 'loop'
+              }}
+              className="w-3 h-3 rounded-full bg-secondary mb-1"
+            />
+          </div>
+        </a>
+      </div>
+
     </section>
   )
 }
