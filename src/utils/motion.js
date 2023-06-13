@@ -24,10 +24,11 @@ export const fadeIn = (direction, type, delay, duration) => {
       opacity: 0,
     },
     show: {
-      scale: 1,
+      x: 0,
+      y: 0,
       opacity: 1,
       transition: {
-        type: "tween",
+        type: type,
         delay: delay,
         duration: duration,
         ease: "easeOut",
