@@ -24,3 +24,8 @@ const App = () => {
 }
 
 export default App
+
+
+/* 
+  We can use react-parallax-tilt instead of react-tilt so that we don't have to face library peer dependency issues while deploying the project
+*/
