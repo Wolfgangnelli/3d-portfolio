@@ -50,15 +50,14 @@ const ComputersCanvas = () => {
 
   return (
     <Canvas frameloop='demand' shadows camera={{ position: [20, 3, 5], fov: 25 }} gl={{ preserveDrawingBuffer: true /* this value need to be there to properly render out model */}}> {/* fov: field off view */}
-      <Suspense fallback={<CavasLoader />}> {/* to have a loader while out model is loading so that is going to be our canvas loader */}
+      <Suspense fallback={<CavasLoader />}>{/* to have a loader while out model is loading so that is going to be our canvas loader */}
       <OrbitControls 
         enableZoom={false}
-        maxPolarAngle={Math.PI / 2} /* we want to do min/max polar angle as well */
+        maxPolarAngle={Math.PI / 2}/* we want to do min/max polar angle as well */
         minPolarAngle={Math.PI / 2}
-        /> {/* These controls are going to allow us to move the model  left and right with the mouse*/}
+        />{/* These controls are going to allow us to move the model  left and right with the mouse*/}
         <Computers isMobile={isMobile} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   )
