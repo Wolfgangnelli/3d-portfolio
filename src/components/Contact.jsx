@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import emailjs from '@emailjs/browser'
@@ -15,8 +16,42 @@ const Contact = () => {
   const [loading, setLoading] = useState(false)
   const formRef = useRef()
 
-  const handleChange = (e) => {}
-  const handleSubmit = (e) => {}
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setForm({ ...form, [name]: value })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    emailjs.send(
+      'service_t93i7b6', 
+      'template_ntjcv6q', 
+      {
+        from_name: form.name,
+        to_name: 'Andrew',
+        from_emal: form.email,
+        to_email: 'solfa_90@hotmail.it',
+        message: form.message
+      },
+      'user_rs5oY00vvJ2fABuiSirlO'
+      ).then(() => {
+        setLoading(false);
+        alert('Thank you. I will get back to you as soon as possible.');
+        setForm({
+          name: '',
+          email: '',
+          message: ''
+        });
+      }, (error) => {
+        setLoading(false);
+
+        console.log(error);
+        alert('Something went wrong.');
+      })
+  }
 
   return (
     <div className='xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden'>
@@ -63,6 +98,13 @@ const Contact = () => {
 
           <button type='submit' className='bg-tertiary py-3 px-8 outline-none w-fit font-bold shadow-primary shadow-md rounded-xl'>{loading ? 'Sending...' : 'Send'}</button>
         </form>
+      </motion.div>
+
+      <motion.div 
+        variants={slideIn('right', 'tween', 0.2, 1)}
+        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+      >
+        <EarthCanvas />
       </motion.div>
     </div>
   )
